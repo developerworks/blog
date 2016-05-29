@@ -1,6 +1,7 @@
 # Elixir 博客备份
 
 - Elixir 
+    + [使用 OpenCV, Python 搭建图片缩略图服务器](docs/elixir/opencv-thumbnail-server.md)
     + [调试技术](docs/elixir/debug.md)
     + [使用Plug开发Web应用程序](docs/elixir/develop-web-app-with-plug.md)
     + [有限状态机原理笔记](docs/elixir/fsm.md)
