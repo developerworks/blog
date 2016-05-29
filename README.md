@@ -1,6 +1,7 @@
 # Elixir 博客备份
 
 - Elixir 
+    + [调试技术](docs/elixir/debug.md)
     + [使用Plug开发Web应用程序](docs/elixir/develop-web-app-with-plug.md)
     + [有限状态机原理笔记](docs/elixir/fsm.md)
     + [连接到远程节点](docs/elixir/connect-to-remote-node.md)
