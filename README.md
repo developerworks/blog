@@ -1,6 +1,7 @@
 # Elixir 博客备份
 
 - Elixir 
+    + [使用Plug开发Web应用程序](docs/elixir/develop-web-app-with-plug.md)
     + [有限状态机原理笔记](docs/elixir/fsm.md)
     + [连接到远程节点](docs/elixir/connect-to-remote-node.md)
     + [在Ubuntu上通过SystemTap对Erlang进行运行时的动态追踪](docs/elixir/ubuntu-systemtap.md)
