@@ -134,7 +134,7 @@ iex --name def@192.168.8.104 -pa _build/dev/lib/distro/ebin/ --app distro \
 
 ## 参考资料
 
-1. [Elixir Application Failover/Takeover](https://erlangcentral.org/topic/elixir-application-failovertakeover)
-2. [Distributed OTP Applications](http://learnyousomeerlang.com/distributed-otp-applications)
-3. [源码仓库](https://github.com/developerworks/distro) 
-4. [分布式应用](http://www.cnphp6.com/archives/51702)
+- [Elixir Application Failover/Takeover](https://erlangcentral.org/topic/elixir-application-failovertakeover)
+- [Distributed OTP Applications](http://learnyousomeerlang.com/distributed-otp-applications)
+- [源码仓库](https://github.com/developerworks/distro) 
+- [分布式应用](http://www.cnphp6.com/archives/51702)

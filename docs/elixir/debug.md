@@ -135,8 +135,8 @@ iex --name "foo@127.0.0.1" --cookie "my_cookie" -S mix
 
 ## 参考资料
 
-[Debugging techniques in Elixir](http://blog.plataformatec.com.br/2016/04/debugging-techniques-in-elixir-lang)
-[How to trace Elixir nodes with Erlyberly](http://blog.plataformatec.com.br/2016/04/how-to-trace-elixir-nodes-with-erlyberly)
+- [Debugging techniques in Elixir](http://blog.plataformatec.com.br/2016/04/debugging-techniques-in-elixir-lang)
+- [How to trace Elixir nodes with Erlyberly](http://blog.plataformatec.com.br/2016/04/how-to-trace-elixir-nodes-with-erlyberly)
 
 
   [1]: https://segmentfault.com/img/bVuZ0X

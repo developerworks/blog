@@ -442,4 +442,4 @@ callback_on_conflicting_process(_Key, Pid, _Meta) ->
 
 ## 项目主页
 
-https://github.com/ostinelli/syn
+- https://github.com/ostinelli/syn

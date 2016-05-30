@@ -64,7 +64,7 @@ erl -sname debug@localhost -setcookie 123456 -run observer
 
 ## 参考
 
-https://www.erlang-solutions.com/blog/secure-shell-for-your-erlang-node.html
+- https://www.erlang-solutions.com/blog/secure-shell-for-your-erlang-node.html
 
 
   [1]: https://segmentfault.com/img/bVvKr0

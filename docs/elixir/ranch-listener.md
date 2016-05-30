@@ -211,7 +211,7 @@ Opts = ranch:get_protocol_options(tcp_echo).
 
 ## 参考资料
 
-https://github.com/ninenines/ranch/blob/master/doc/src/guide/listeners.asciidoc
-https://en.wikipedia.org/wiki/Transmission_Control_Protocol#Protocol_operation
+- https://github.com/ninenines/ranch/blob/master/doc/src/guide/listeners.asciidoc
+- https://en.wikipedia.org/wiki/Transmission_Control_Protocol#Protocol_operation
 
   [1]: https://segmentfault.com/img/bVvATd

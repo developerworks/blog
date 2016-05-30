@@ -158,7 +158,7 @@ mix ranch.new <project_name> --sup # 用实际的项目名称替换 <project_nam
 
 ## 参考资料
 
-https://github.com/ninenines/ranch/blob/master/doc/src/guide/embedded.asciidoc
+- https://github.com/ninenines/ranch/blob/master/doc/src/guide/embedded.asciidoc
 
 
   [1]: https://segmentfault.com/img/bVvy81

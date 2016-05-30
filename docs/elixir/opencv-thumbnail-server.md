@@ -321,14 +321,14 @@ https://github.com/developerworks/opencv_thumbnail_server
 
 ## 参考资料
 
-[利用Python和OpenCV将URL直接转换成OpenCV格式](http://python.jobbole.com/81131)
-[How to read raw png from an array in python opencv?](http://stackoverflow.com/questions/11552926/how-to-read-raw-png-from-an-array-in-python-opencv)
-[Install OpenCV for Python on Mac OS X](http://www.mobileway.net/2015/02/14/install-opencv-for-python-on-mac-os-x)
-[Installing scikit-image](http://scikit-image.org/docs/stable/install.html)
-[How can i read an image from an internet url in python cv2 , scikit image and mahotas](http://stackoverflow.com/questions/21061814/how-can-i-read-an-image-from-an-internet-url-in-python-cv2-scikit-image-and-ma)
-[Using Elixir, erlport with Python 2.7.9, receiving an arity error](http://stackoverflow.com/questions/29890647/using-elixir-erlport-with-python-2-7-9-receiving-an-arity-error)
-[How to read image from in memory buffer (StringIO) or from url with opencv python library](https://stackoverflow.com/questions/13329445/how-to-read-image-from-in-memory-buffer-stringio-or-from-url-with-opencv-pytho)
-[Python OpenCV convert image to byte string?](http://stackoverflow.com/questions/17967320/python-opencv-convert-image-to-byte-string)
+- [利用Python和OpenCV将URL直接转换成OpenCV格式](http://python.jobbole.com/81131)
+- [How to read raw png from an array in python opencv?](http://stackoverflow.com/questions/11552926/how-to-read-raw-png-from-an-array-in-python-opencv)
+- [Install OpenCV for Python on Mac OS X](http://www.mobileway.net/2015/02/14/install-opencv-for-python-on-mac-os-x)
+- [Installing scikit-image](http://scikit-image.org/docs/stable/install.html)
+- [How can i read an image from an internet url in python cv2 , scikit image and mahotas](http://stackoverflow.com/questions/21061814/how-can-i-read-an-image-from-an-internet-url-in-python-cv2-scikit-image-and-ma)
+- [Using Elixir, erlport with Python 2.7.9, receiving an arity error](http://stackoverflow.com/questions/29890647/using-elixir-erlport-with-python-2-7-9-receiving-an-arity-error)
+- [How to read image from in memory buffer (StringIO) or from url with opencv python library](https://stackoverflow.com/questions/13329445/how-to-read-image-from-in-memory-buffer-stringio-or-from-url-with-opencv-pytho)
+- [Python OpenCV convert image to byte string?](http://stackoverflow.com/questions/17967320/python-opencv-convert-image-to-byte-string)
 
 
   [1]: https://segmentfault.com/img/bVwhAW
