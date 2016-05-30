@@ -193,9 +193,9 @@ kiex use 1.2.5
 
 ## 参考资料
 
-[Fast Continuous Deployment of an Elixir Gameserver](https://www.youtube.com/watch?v=RoT8RnQHvgo)
-[Real World Elixir Deployment](http://www.slideshare.net/petegamache/real-world-elixir-deployment)
-[Edeliver API Reference](https://hexdocs.pm/edeliver/api-reference.html)
+- [Fast Continuous Deployment of an Elixir Gameserver](https://www.youtube.com/watch?v=RoT8RnQHvgo)
+- [Real World Elixir Deployment](http://www.slideshare.net/petegamache/real-world-elixir-deployment)
+- [Edeliver API Reference](https://hexdocs.pm/edeliver/api-reference.html)
 
   [1]: https://segmentfault.com/img/bVwAPt
   [2]: https://segmentfault.com/img/bVwAvk
