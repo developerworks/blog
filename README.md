@@ -1,6 +1,7 @@
 # Elixir 博客备份
 
 - Elixir 
+    + [在Linux系统中收集硬件和系统信息](docs/show_hardware_info.md)
     + [使用 Edeliver 进行持续部署](docs/elixir/edeliver.md)
     + [使用 OpenCV, Python 搭建图片缩略图服务器](docs/elixir/opencv-thumbnail-server.md)
     + [调试技术](docs/elixir/debug.md)
