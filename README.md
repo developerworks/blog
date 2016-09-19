@@ -1,6 +1,7 @@
 # Elixir 博客备份
 
 - Elixir 
+    + [Elixir Ecto: PostgreSQL大自增长主键的设置](docs/elixir/postgres_bigserial.md)
     + [Erlang/Elixir: 使用 Leex 和 Yecc 解析领域语言(DSL)](docs/elixir/parse_dsl_with_leex_and_yecc.md)
     + [使用 Rust 语言开发 Erlang NIF](docs/write_nif_with_rust.md)
     + [使用 Edeliver 进行持续部署](docs/elixir/edeliver.md)
