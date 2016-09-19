@@ -179,4 +179,4 @@ leex 是一个词法分析器, 它的用途是接收输入, 应用词法规则, 
 - https://arifishaq.wordpress.com/2014/01/22/playing-with-leex-and-yeec/
 
 
-  [1]: /img/bVynX8
+  [1]: https://segmentfault.com/img/bVynX8
