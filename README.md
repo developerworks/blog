@@ -28,4 +28,5 @@
     + [从SQL数据库迁移到Riak](docs/riak/sql-migrate-to-riak.md)
 - Linux
     + [在Linux系统中收集硬件和系统信息](docs/show_hardware_info.md)
+    + [SSH: 使用SSH+SOCAT中继UDP数据包](docs/relay_udp_package_with_ssh.md)
 
