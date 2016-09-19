@@ -1,6 +1,7 @@
 # Elixir 博客备份
 
 - Elixir 
+    + [使用 Rust 语言开发 Erlang NIF](docs/write_nif_with_rust.md)
     + [在Linux系统中收集硬件和系统信息](docs/show_hardware_info.md)
     + [使用 Edeliver 进行持续部署](docs/elixir/edeliver.md)
     + [使用 OpenCV, Python 搭建图片缩略图服务器](docs/elixir/opencv-thumbnail-server.md)
