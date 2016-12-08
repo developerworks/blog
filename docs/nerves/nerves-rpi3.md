@@ -17,7 +17,9 @@
 
 ## 过程
 
-### 创建一个Nerves项目
+### 创建 Nerves 项目
+
+> 第一步, 创建外层项目和子项目
 
 ```
 # 创建伞状项目
@@ -31,7 +33,9 @@ mix nerves.new fw --target rpi3
 mix phoenix.new ui --no-ecto --no-brunch
 ```
 
-修改固件配置文件, 把 Application 添加到启动列表中
+### 配置 Nerves 项目
+
+> 修改固件配置文件, 把 Application 添加到启动列表中
 
 ```
 # hello_phoenix/apps/fw/mix.exs
@@ -42,7 +46,7 @@ def application do
 end
 ```
 
-启动网络
+> 启动网络
 
 ```
 # hello_phoenix/apps/fw/lib/fw.ex
@@ -54,18 +58,13 @@ defmodule Fw do
   # @opts [mode: "static", ip: "10.0.10.3", mask: "16", subnet: "255.255.0.0"]
   @opts [mode: "dhcp"]
 
-  # See http://elixir-lang.org/docs/stable/elixir/Application.html
-  # for more information on OTP Applications
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
-    # Define workers and child supervisors to be supervised
     children = [
       supervisor(Phoenix.PubSub.PG2, [Nerves.PubSub, [poolsize: 1]]),
       worker(Task, [fn -> start_network end], restart: :transient)
     ]
 
-    # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
-    # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Fw.Supervisor]
     Supervisor.start_link(children, opts)
   end
@@ -75,11 +74,10 @@ defmodule Fw do
     opts = Application.get_env(:fw, :wlan0)
     Nerves.InterimWiFi.setup "wlan0", opts
   end
-
 end
 ```
 
-在Fw配置文件
+> 修改配置文件 `hello_phoenix/apps/fw/config/config.exs`, 注意把监听地址从`localhost`,修改为 `0.0.0.0`, 以便让局域网中的其他机器能够访问.
 
 ```
 use Mix.Config
@@ -113,7 +111,7 @@ config :fw, :wlan0,
   psk: "gx888888"
 ```
 
-编译(可能会有翻墙的需要)
+> 编译(可能会有翻墙的需要)
 
 ```
 ➜  hello_wifi git:(master) ✗ MIX_ENV=prod NERVES_TARGET=rpi3 mix compile
@@ -132,26 +130,71 @@ Generated nerves_toolchain_arm_unknown_linux_gnueabihf app
 [nerves_toolchain][http] Downloading Toolchain
 ```
 
-UI 测试, 往设备烧之前可以先在主机系统上测试一下, 没问题后再制作固件并烧到Pi上.
+> 依赖配置
+
+注意, 现在需要使用 0.7 的系统, 0.6.1 的系统WIFI驱动是有问题的, 为此, 我们需要修改`hello_phoenix/apps/fw/mix.exs` 配置文件的 `deps` 和 `system` 为如下:
+
+```
+def deps do
+  [
+    {:nerves, "~> 0.3.0"},
+    {:nerves_interim_wifi, github: "nerves-project/nerves_interim_wifi"},
+    {:ui, in_umbrella: true}]
+end
+
+def system(target) do
+  [
+    # {:"nerves_system_#{target}", ">= 0.0.0"}
+    {:"nerves_system_#{target}", github: "nerves-project/nerves_system_rpi3"}
+  ]
+end
+```
+
+> 把 `:ui`和`:nerves_interim_wifi` 添加到启动列表中
+
+```
+def application do
+  [mod: {Fw, []},
+   applications: [:logger, :ui, :nerves_interim_wifi]]
+end
+```
+
+> 修改`hello_phoenix/app/fw/mix.exs`中的依赖路径和构建路径
+
+```
+def project do
+  [app: :fw,
+   version: "0.0.1",
+   target: @target,
+   archives: [nerves_bootstrap: "~> 0.1.4"],
+   deps_path: "../../deps/#{@target}",
+   build_path: "../../_build/#{@target}",
+   lockfile: "../../mix.lock",
+   build_embedded: Mix.env == :prod,
+   start_permanent: Mix.env == :prod,
+   aliases: aliases,
+   deps: deps ++ system(@target)]
+end
+```
+
+> UI 测试, 往设备烧之前可以先在主机系统上测试一下, 没问题后再制作固件并烧到Pi上.
 
 ```
 cd hello_phoenix/app/ui
 iex -S mix phoenix.server
 ```
 
-制作固件, 固件的制作需要切换到 `hello_phoenix/app/fw` 去执行, 切记不要在伞状项目 `hello_phoenix` 的根目录运行.
+> 制作固件, 固件的制作需要切换到 `hello_phoenix/app/fw` 去执行, 切记不要在伞状项目 `hello_phoenix` 的根目录运行.
 
 ```
 cd hello_phoenix/app/fw
+mix deps.get
 mix firmware
 mix firmware.burn
 ```
 
 在Mac上, `mix firmware.burn` 会提示你确认烧录的目标(别烧错了, 特别是插入了多个SD卡的时候), 并需要输入系统登录密码.
 
-
-
-### 配置Nerves项目
 
 ### 注意事项
 
@@ -171,11 +214,15 @@ export NERVES_SYSTEM_CACHE=local
 
 ## 运行结果
 
+![img_1578](https://cloud.githubusercontent.com/assets/725190/20917761/556a631a-bbce-11e6-989f-a25ba43770ee.JPG)
+
+
 ## 总结
 
 简化了嵌入式系统的开发, 把嵌入式开发带入到普通程序员群体. 如果你使用的是官方支持的开饭, 甚至不需要了解底层的任何东西, 只要了解Elixir就可以了, 对物联网应用开发有极大的促进作用.
 
 ## 源代码仓库
 
+https://github.com/developerworks/hello_iot
 
-  [1]: /img/bVGvQd
+可以Clone下来仔细看Git日志, 详细说明了如何从从头开始配置一个新的Nerves项目.
