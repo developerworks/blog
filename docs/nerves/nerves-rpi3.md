@@ -236,4 +236,4 @@ export NERVES_SYSTEM_CACHE=local
 https://github.com/developerworks/hello_iot
 
 可以Clone下来仔细看Git日志, 详细说明了如何从从头开始配置一个新的Nerves项目.
-![img_1564](https://cloud.githubusercontent.com/assets/725190/20994915/77b1fdd2-bd2e-11e6-81b7-8e744488c5ce.JPG)
+
