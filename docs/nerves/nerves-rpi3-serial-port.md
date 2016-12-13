@@ -107,8 +107,8 @@ defscrollback 10000
 > [Elixir 下开发嵌入式系统开发: 串口调试](https://segmentfault.com/a/1190000007785009)
 
 
-  [1]: /img/bVGPgp
-  [2]: /img/bVGPgK
-  [3]: /img/bVGPh9
-  [4]: /img/bVGPjc
-  [5]: /img/bVGPjJ
+  [1]: https://segmentfault.com/img/bVGPgp
+  [2]: https://segmentfault.com/img/bVGPgK
+  [3]: https://segmentfault.com/img/bVGPh9
+  [4]: https://segmentfault.com/img/bVGPjc
+  [5]: https://segmentfault.com/img/bVGPjJ
