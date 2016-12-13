@@ -1,7 +1,8 @@
 # Elixir 博客备份
 
 - Nerves
-    + [Elixir Nerves: Respberry Pi 3](docs/nerves/nerves-rpi3.md)
+    + [使用 Elixir 开发嵌入式系统: 小试身手](docs/nerves/nerves-rpi3.md)
+    + [使用 Elixir 开发嵌入式系统: 串口调试](docs/nerves/nerves-rpi3-serial-port.md)
 
 - Elixir
     + [Elixir Ecto: PostgreSQL大自增长主键的设置](docs/elixir/postgres_bigserial.md)
