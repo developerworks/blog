@@ -242,3 +242,8 @@ https://github.com/developerworks/hello_iot
 
 可以Clone下来仔细看Git日志, 详细说明了如何从从头开始配置一个新的Nerves项目.
 
+## 系列文章
+
+
+- [Elixir 下开发嵌入式系统开发: 小试身手](https://segmentfault.com/a/1190000007733527)
+- [Elixir 下开发嵌入式系统开发: 串口调试](https://segmentfault.com/a/1190000007785009)
