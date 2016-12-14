@@ -105,8 +105,8 @@ defscrollback 10000
 
 ## 系列文章
 
-> [Elixir 下开发嵌入式系统开发: 小试身手](https://segmentfault.com/a/1190000007733527)
-> [Elixir 下开发嵌入式系统开发: 串口调试](https://segmentfault.com/a/1190000007785009)
+- [Elixir 下开发嵌入式系统开发: 小试身手](https://segmentfault.com/a/1190000007733527)
+- [Elixir 下开发嵌入式系统开发: 串口调试](https://segmentfault.com/a/1190000007785009)
 
 
   [1]: https://segmentfault.com/img/bVGPgp
