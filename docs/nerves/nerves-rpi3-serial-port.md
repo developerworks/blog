@@ -21,11 +21,12 @@ USB 转 TTL 调试线
 
 ![图片描述][2]
 
-除了OSX系统外, 还有Android和Windows的驱动可以下载. 选择合适自己的即可.
+除了OSX系统外, 还有Android和Windows的驱动可以下载. 选择合适自己的即可. Windows 用户请参考 [Windows下用串行连接控制树莓派](http://shumeipai.nxez.com/2014/05/04/under-windows-serial-connection-control-raspberry-pi.html).
+
 
 ## 步骤一: 配置
 
-参考 [Elixir 下开发嵌入式系统开发: 小试身手](http://shumeipai.nxez.com/2015/09/06/mac-os-x-rpi-serial-connection.html), 从Github Folk代码库.
+参考 [Elixir 下开发嵌入式系统开发: 小试身手](https://segmentfault.com/a/1190000007733527), 从Github Fork代码库.
 
 配置文件覆盖, 该配置所指向的目录会覆盖系统文件对应的文件. 在 `hello_iot/apps/fw/config/config.exs` 配置文件中增加如下配置:
 
@@ -68,7 +69,7 @@ mix firmware.burn
 Respberry Pi 3 的串口线连接线示意图
 ![图片描述][4]
 
-GPIO针脚15接, 绿线TXD, 14脚节RXD白线, 黑色为GND地线, `红色不接`, `实际接线图如下`:
+GPIO针脚15, 接绿线TXD, 14针脚, 接白线RXD, 黑色为GND地线, 我用的Mini USB的外接电源, 所以这里`红色的供电针脚不接, 实际接线图如下`:
 
 ![图片描述][5]
 
@@ -100,11 +101,12 @@ defscrollback 10000
 
 - [串口驱动下载地址](http://www.prolific.com.tw/US/ShowProduct.aspx?pcid=41&showlevel=0041-0041)
 - [Mac OS X上使用USB转串口线连接树莓派](http://shumeipai.nxez.com/2015/09/06/mac-os-x-rpi-serial-connection.html)
+- [Windows下用串行连接控制树莓派](http://shumeipai.nxez.com/2014/05/04/under-windows-serial-connection-control-raspberry-pi.html)
 
 ## 系列文章
 
-- [Elixir 下开发嵌入式系统开发: 小试身手](https://segmentfault.com/a/1190000007733527)
-- [Elixir 下开发嵌入式系统开发: 串口调试](https://segmentfault.com/a/1190000007785009)
+> [Elixir 下开发嵌入式系统开发: 小试身手](https://segmentfault.com/a/1190000007733527)
+> [Elixir 下开发嵌入式系统开发: 串口调试](https://segmentfault.com/a/1190000007785009)
 
 
   [1]: https://segmentfault.com/img/bVGPgp
