@@ -1,5 +1,8 @@
 # Elixir 博客备份
 
+- IoT
+    + [嵌入式系统开发: LinkIt™ Smart 7688 Duo物联网平台简介](docs/iot/linkit_smart_7688_duo.md)
+
 - Nerves
     + [使用 Elixir 开发嵌入式系统: 小试身手](docs/nerves/nerves-rpi3.md)
     + [使用 Elixir 开发嵌入式系统: 串口调试](docs/nerves/nerves-rpi3-serial-port.md)
