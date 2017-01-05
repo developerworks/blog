@@ -1,5 +1,9 @@
 # Elixir 博客备份
 
+- Arduino
+    * [Arduino 传感器: 使用FSR402压力传感器检测压力](docs/arduino/fsr402.md)
+    * [Arduino 传感器: 使用DS1302时钟模块](docs/arduino/ds1302.md)
+
 - IoT
     + [嵌入式系统开发: LinkIt™ Smart 7688 Duo物联网平台简介](docs/iot/linkit_smart_7688_duo.md)
 
