@@ -12,6 +12,7 @@
     + [使用 Elixir 开发嵌入式系统: 串口调试](docs/nerves/nerves-rpi3-serial-port.md)
 
 - Elixir
+    + [Defsql: 作为Elixir函数的SQL查询](docs/elixir/defql.md)
     + [Elixir Ecto: PostgreSQL大自增长主键的设置](docs/elixir/postgres_bigserial.md)
     + [Erlang/Elixir: 使用 Leex 和 Yecc 解析领域语言(DSL)](docs/elixir/parse_dsl_with_leex_and_yecc.md)
     + [使用 Rust 语言开发 Erlang NIF](docs/write_nif_with_rust.md)
