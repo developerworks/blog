@@ -23,7 +23,7 @@
 
 GraphQL同样能够让客户端程序高效地批量获取数据. 例如, 看一看下面这个GraphQL请求:
 
-```json
+```graphql
 {
   latestPost {
     _id,
