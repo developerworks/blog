@@ -1,18 +1,16 @@
-> [GraphQL 入门: 简介](https://segmentfault.com/a/1190000008828678)
-> [GraphQL 入门: Apollo Client - 简介](https://segmentfault.com/a/1190000008632659)
-> [GraphQL 入门: Apollo Client - 安装和配置选项](https://segmentfault.com/a/1190000008632704)
-> [GraphQL 入门: Apollo Client - 连接到数据](https://segmentfault.com/a/1190000008655764)
-> [GraphQL 入门: Apollo Client - 网络层](https://segmentfault.com/a/1190000008637399)
-> [GraphQL 入门: Apollo Client - 开发调试工具](https://segmentfault.com/a/1190000008754734)
-> [GraphQL 入门: Apollo Client - 持久化GraphQL查询概要](https://segmentfault.com/a/1190000008862505)
-> [GraphQL 入门: Apollo Client - 存储API](https://segmentfault.com/a/1190000008927372)
-> [GraphQL 入门: Apollo Client - 查询(Batching)合并](https://segmentfault.com/a/1190000008944122)
-
 [GraphQL][1] 是Facebook开发的一个应用层查询语言. 后端定义基于图的模式. 客户端可以按需查询需要的数据.
 
 ![clipboard.png][2]
 
 上图所示, 查询流程分为几个步骤, 涉及多个组件, 包括客户端应用程序(Web, 手机, 桌面等App), 一个GraphQL服务器用于解析查询, 以及多个不同的数据来源.
+
+再来看一下, GraphQL官方首页的说明
+
+![clipboard.png][5]
+
+- 描述数据
+- 请求你想要的数据
+- 获得预期的结果
 
 客户端数据要求发生变化时, 不需要修改后端. 因此, 你不必因为客户端数据需求的变更而改变你的后端. 这解决了管理REST API中的最大的问题.
 
@@ -127,3 +125,4 @@ GraphQL同样能够让客户端程序高效地批量获取数据. 例如, 看一
   [2]: https://segmentfault.com/img/bVLbZo
   [3]: https://sandbox.learngraphql.com
   [4]: https://segmentfault.com/img/bVLcT0
+  [5]: https://segmentfault.com/img/bVLXcp
