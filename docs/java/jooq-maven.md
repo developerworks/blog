@@ -149,7 +149,7 @@ mvn compile
 编译完成如果没有错误, 在 **src/main/java** 中会生成 **jooq.generated** 包:
 
 
-![clipboard.png](https://segmentfault.com/img/bVXR4C)
+![image](https://user-images.githubusercontent.com/725190/32364165-470665ae-c0ae-11e7-83fe-b3706090fd0c.png)
 
 
 
