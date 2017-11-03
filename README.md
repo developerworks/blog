@@ -1,5 +1,6 @@
 # Elixir 博客备份
-
+- Java
+    + [Java: 在Maven项目中使用JOOQ](docs/java/jooq-maven.md)
 - GraphQL
 
     + [GraphQL 入门: 简介](docs/graphql/introduction.md)
