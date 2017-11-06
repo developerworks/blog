@@ -113,3 +113,24 @@ public interface DatabaseService {
   ...
 }
 ```
+
+## 服务接口的限制
+
+为了利于事件总线消息的编解码, 服务接口必须只能返回两种类型:
+
+- Void
+- @Fluent 返回服务本身的引用
+
+这是因为方法必须是非阻塞的, 如果服务是远程的, 那么就不可能在无阻塞的情况下立即返回值. 另外接口方法的参数类型也是受限的, 支持如下参数类型:
+
+
+- **JSON**
+- **PRIMITIVE**
+- **List<JSON>**
+- **List<PRIMITIVE>**
+- **Set<JSON>**
+- **Set<PRIMITIVE>**
+- **Map<String, JSON>**
+- **Map<String, PRIMITIVE>**
+- 任何枚举类型
+- 任何标注为 **@DataObject** 的类
