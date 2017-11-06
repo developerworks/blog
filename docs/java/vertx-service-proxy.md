@@ -43,7 +43,7 @@ public interface DatabaseService {
 }
 ```
 
-> 注意: `java.lang.IllegalStateException: Cannot find proxyClass`, 把``插件的版本升级到`3.7.0`
+> 注意: `java.lang.IllegalStateException: Cannot find proxyClass`, 把`maven-compiler-plugin`插件的版本升级到`3.7.0`
 
 ```
 <plugin>
