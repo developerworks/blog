@@ -1,6 +1,7 @@
 # Elixir 博客备份
 - Java
-    + [Java: 在Maven项目中使用JOOQ](docs/java/jooq-maven.md)
+    + [在 Maven 项目中使用JOOQ](docs/java/jooq-maven.md)
+    + [Vert.x 3 服务代理](docs/java/vertx-service-proxy.md)
 - GraphQL
 
     + [GraphQL 入门: 简介](docs/graphql/introduction.md)
