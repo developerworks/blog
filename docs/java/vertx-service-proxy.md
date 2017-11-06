@@ -134,3 +134,22 @@ public interface DatabaseService {
 - **Map<String, PRIMITIVE>**
 - 任何枚举类型
 - 任何标注为 **@DataObject** 的类
+
+支持的异步结果的类型为:
+
+- **JSON**
+- **PRIMITIVE**
+- **List<JSON>**
+- **List<PRIMITIVE>**
+- **Set<JSON>**
+- **Set<PRIMITIVE>**
+- 任何枚举类型
+- 任何标注为 **@DataObject** 的类
+- 其他代理
+
+和接口方法的参数不同, 异步结果不支持返回下面两种类型:
+
+- **Map<String, JSON>**
+- **Map<String, PRIMITIVE>**
+
+> 依据官方文档推断, 没有实际验证是否支持上述两种类型.
