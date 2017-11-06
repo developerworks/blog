@@ -71,3 +71,45 @@ public interface DatabaseService {
   </configuration>
 </plugin>
 ```
+
+
+## 代理创建
+
+代理创建有两种方式, 分别是:
+
+- ServiceProxyBuilder
+- VertxEBProxy
+
+第一种是手工的通过 ServiceProxyBuilder 类构造一个代理类, 第二种是通过生成的代码来创建代理, 下面我们分别说明两种方式是如何创建代理类的.
+
+### 第一种, 使用 ServiceProxyBuilder
+
+```
+ServiceProxyBuilder builder = new ServiceProxyBuilder(vertx).setAddress(DatabaseServiceVerticle.SERVICE_ADDRESS);
+// 构造服务
+DatabaseService service1 = builder.build(DatabaseService.class);
+```
+
+实例化 ServiceProxyBuilder 类, 需要传入的参数为:
+
+- Vert.x 实例对象,
+- 服务在事件总线上的地址
+
+让后调用 **ServiceProxyBuilder** 实例对象的 **build** 方法, 并传入 服务接口类CLASS.
+
+### 第二种, 使用生成的代码创建
+
+首先要在接口中添加一个静态方法 **createProxy**, 用于实例化 **${ServiceInterfaceName}VertxEBProxy** 代理类
+
+```
+public interface DatabaseService {
+  ...
+  static DatabaseService create(Vertx vertx) {
+    return new DatabaseServiceImpl(vertx);
+  }
+  static DatabaseService createProxy(Vertx vertx, String address) {
+    return new DatabaseServiceVertxEBProxy(vertx, address);
+  }
+  ...
+}
+```
