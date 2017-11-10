@@ -48,19 +48,38 @@ public class QrcodeServiceBridge extends AbstractVerticle {
 生成的模块是兼容 CommonJS, AMD 和 Webpack 的. 下面是一个浏览器端的例子:
 
 ```js
-<script src="http://cdn.sockjs.org/sockjs-0.3.4.min.js"></script>
-<script src="vertx-eventbus.js"></script>
-<script>
-  var eb = new EventBus('http://localhost:8080/eventbus');
-  eb.onopen = function() {
-    var QrcodeService = require('qrcode-service-js/qrcode_service-proxy');
-    var svc = new QrcodeService(eb, "com.totorotec.servicefactory.qrcode-service");
-    var qrcodeDataUrl = proxy.getQrcode("https://www.qq.com", 380, "png", "dataurl", "/tmp/%s.%s", function (data, error) {
-      console.log(data);
-      console.log(error);
-    });
-  };
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Test Qrcode Service in Browser</title>
+  <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+  <script src="./vertx-eventbus.js"></script>
+  <script src="./qrcode_service-proxy.js"></script>
+</head>
+<body>
+  <div id="qrcode"></div>
+  <script>
+    var qrcodeStr;
+    var eb = new EventBus('http://localhost:8080/eventbus');
+    eb.onopen = function () {
+      var service = new QrcodeService(eb, "com.totorotec.servicefactory.qrcode-service");
+      service.getQrcode("https://www.qq.com", 380, "png", "dataurl", "/tmp/%s.%s", function (error, data) {
+        if (error == null) {
+          console.log(data.data);
+          qrcodeStr = data.data
+          document.getElementById("qrcode").innerHTML = qrcodeStr;
+        }
+        else {
+          console.log(error);
+        }
+      });
+    };
+  </script>
+</body>
+</html>
 ```
 
 下面的例子是说明了如何在Node.js环境中调用服务:
