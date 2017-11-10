@@ -2,6 +2,7 @@
 - Java
     + [在 Maven 项目中使用JOOQ](docs/java/jooq-maven.md)
     + [Vert.x 3 服务代理](docs/java/vertx-service-proxy.md)
+    + [Vert.x 3 SockJS服务代理](docs/java/vertx-sockjs-service-proxy.md)
 - GraphQL
 
     + [GraphQL 入门: 简介](docs/graphql/introduction.md)
