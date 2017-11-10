@@ -1,6 +1,6 @@
 > 服务代理提供了在事件总线上暴露服务, 并且减少调用服务所要求的代码的一种方式. 服务代理帮助你解析事件总线的消息结构和接口方法的映射关系, 比如方法名称, 参数等等. 本质上是一种RPC. 它通过代码生成的方式创建服务代理.
 
-因此需要实现两个Verticle, 一个为 `QrcodeService`, 提供数据库操作服务. 另一个 Verticle 用于请求数据库操作.
+因此需要实现两个Verticle, 一个为 `QrcodeService`, 提供二维码生成服务. 另一个 Verticle 用于服务注册.
 
 Verticle 运行在一个两节点的集群环境中中
 
@@ -8,8 +8,8 @@ Verticle 运行在一个两节点的集群环境中中
 
 要提供一个服务, 需要一个服务接口, 一个实现和一个Verticle
 
-- 服务接口: `QrcodeService`, 服务接口, 定义了数据操作接口和代理创建接口.
-- 服务实现: `QrcodeServiceImpl`, 服务实现类, 实际的数据库操作在这里实现
+- 服务接口: `QrcodeService`, 服务接口, 定义了二维码生成和代理创建接口.
+- 服务实现: `QrcodeServiceImpl`, 服务实现类, 实际的二维码生成函数在这里实现
 - 服务注册: `QrcodeServiceVerticle`, 用于注册服务
 
 服务接口是通过 `@ProxyGen` 标注的接口, 例如:
@@ -101,7 +101,7 @@ public class QrcodeServiceConsumer extends AbstractVerticle {
 
     QrcodeService qrcodeServiceProxy = QrcodeService.createProxy(vertx, QrcodeService.SERVICE_ADDRESS);
     qrcodeServiceProxy.getQrcode("https://www.qq.com", 600, "jpg", "file",
-        "/Users/hezhiqiang/totoro/_vertx-projects/service_qrcode/_tmp/%s.%s", ar -> {
+        "/tmp/%s.%s", ar -> {
           if (ar.succeeded()) {
             logger.info(ar.result().encodePrettily());
           } else {
@@ -120,7 +120,7 @@ var service = require("qrcode-service-js/qrcode_service");
 console.log("Creating service proxy...");
 var proxy = service.createProxy(vertx, "com.totorotec.servicefactory.qrcode-service");
 
-proxy.getQrcode("https://gm.totorotec.com", 380, "png", "dataurl", "/tmp/%s.%s", function (error, data) {
+proxy.getQrcode("https://www.qq.com", 380, "png", "dataurl", "/tmp/%s.%s", function (error, data) {
   if(error == null) {
     console.log(data);
   }
