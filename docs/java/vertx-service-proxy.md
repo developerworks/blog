@@ -1,8 +1,6 @@
-# Vert.x 3 服务代理
-
 > 服务代理提供了在事件总线上暴露服务, 并且减少调用服务所要求的代码的一种方式. 服务代理帮助你解析事件总线的消息结构和接口方法的映射关系, 比如方法名称, 参数等等. 本质上是一种RPC. 它通过代码生成的方式创建服务代理.
 
-因此需要实现两个Verticle, 一个为 `DatabaseService`, 提供数据库操作服务. 另一个 Verticle 用于请求数据库操作.
+因此需要实现两个Verticle, 一个为 `QrcodeService`, 提供数据库操作服务. 另一个 Verticle 用于请求数据库操作.
 
 Verticle 运行在一个两节点的集群环境中中
 
@@ -10,14 +8,14 @@ Verticle 运行在一个两节点的集群环境中中
 
 要提供一个服务, 需要一个服务接口, 一个实现和一个Verticle
 
-- 服务接口: `DatabaseService`, 服务接口, 定义了数据操作接口和代理创建接口.
-- 服务实现: `DatabaseServiceImpl`, 服务实现类, 实际的数据库操作在这里实现
-- 服务注册: `DatabaseServiceVerticle`, 用于注册服务
+- 服务接口: `QrcodeService`, 服务接口, 定义了数据操作接口和代理创建接口.
+- 服务实现: `QrcodeServiceImpl`, 服务实现类, 实际的数据库操作在这里实现
+- 服务注册: `QrcodeServiceVerticle`, 用于注册服务
 
 服务接口是通过 `@ProxyGen` 标注的接口, 例如:
 
 ```
-package com.totorotec.service;
+package com.totorotec.service.qrcode;
 
 import io.vertx.codegen.annotations.ProxyGen;
 import io.vertx.codegen.annotations.VertxGen;
@@ -26,24 +24,27 @@ import io.vertx.core.Handler;
 import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
 
-import com.totorotec.service.impl.DatabaseServiceImpl;
+import com.totorotec.service.qrcode.impl.QrcodeServiceImpl;
+
 @ProxyGen
 @VertxGen
-public interface DatabaseService {
-  // 一些用于创建服务实例和服务代理实例的工厂方法
-  static DatabaseService create(Vertx vertx) {
-    return new DatabaseServiceImpl(vertx);
+public interface QrcodeService {
+  public static final String SERVICE_ADDRESS = "com.totorotec.servicefactory.qrcode-service";
+
+  static QrcodeService create(Vertx vertx, JsonObject config) {
+    return new QrcodeServiceImpl(vertx, config);
   }
-  static DatabaseService createProxy(Vertx vertx, String address) {
-    return new DatabaseServiceVertxEBProxy(vertx, address);
+
+  static QrcodeService createProxy(Vertx vertx, String address) {
+    return new QrcodeServiceVertxEBProxy(vertx, address);
   }
-  // 实际的服务方法
-  // void save(String collection, JsonObject document, Handler<AsyncResult<Void>> resultHandler);
-  public void getUserById(int id, Handler<AsyncResult<JsonObject>> resultHandler);
+
+  void getQrcode(String text, int imageSize, String imageType, String outputType, String filePatten, Handler<AsyncResult<JsonObject>> resultHandler);
 }
+
 ```
 
-> 注意: `java.lang.IllegalStateException: Cannot find proxyClass`, 把`maven-compiler-plugin`插件的版本升级到`3.7.0`
+> 注意: `java.lang.IllegalStateException: Cannot find proxyClass`, 把``插件的版本升级到`3.7.0`
 
 ```
 <plugin>
@@ -72,97 +73,137 @@ public interface DatabaseService {
 </plugin>
 ```
 
+完整的 pom.xml 项目文件可以参考: https://github.com/developerworks/service_qrcode/blob/master/pom.xml
 
-## 代理创建
+## 消费服务
 
-代理创建有两种方式, 分别是:
+实现了一个服务提供者, 下面我们来说明如何消(调)费(用)这个服务.
 
-- ServiceProxyBuilder
-- VertxEBProxy
+### 在Vertx JVM中从Java端调用
 
-第一种是手工的通过 ServiceProxyBuilder 类构造一个代理类, 第二种是通过生成的代码来创建代理, 下面我们分别说明两种方式是如何创建代理类的.
+```java
+package com.totorotec.service.qrcode;
 
-### 第一种, 使用 ServiceProxyBuilder
+import io.vertx.core.AbstractVerticle;
+import io.vertx.core.logging.Logger;
+import io.vertx.core.logging.LoggerFactory;
 
-```
-ServiceProxyBuilder builder = new ServiceProxyBuilder(vertx).setAddress(DatabaseServiceVerticle.SERVICE_ADDRESS);
-// 构造服务
-DatabaseService service1 = builder.build(DatabaseService.class);
-```
+/**
+ * QrcodeServiceConsumer
+ */
+public class QrcodeServiceConsumer extends AbstractVerticle {
 
-实例化 ServiceProxyBuilder 类, 需要传入的参数为:
+  private static final Logger logger = LoggerFactory.getLogger(QrcodeServiceConsumer.class);
 
-- Vert.x 实例对象,
-- 服务在事件总线上的地址
+  @Override
+  public void start() throws Exception {
+    super.start();
 
-让后调用 **ServiceProxyBuilder** 实例对象的 **build** 方法, 并传入 服务接口类CLASS.
-
-### 第二种, 使用生成的代码创建
-
-首先要在接口中添加一个静态方法 **createProxy**, 用于实例化 **${ServiceInterfaceName}VertxEBProxy** 代理类
-
-```
-public interface DatabaseService {
-  ...
-  static DatabaseService create(Vertx vertx) {
-    return new DatabaseServiceImpl(vertx);
+    QrcodeService qrcodeServiceProxy = QrcodeService.createProxy(vertx, QrcodeService.SERVICE_ADDRESS);
+    qrcodeServiceProxy.getQrcode("https://www.qq.com", 600, "jpg", "file",
+        "/Users/hezhiqiang/totoro/_vertx-projects/service_qrcode/_tmp/%s.%s", ar -> {
+          if (ar.succeeded()) {
+            logger.info(ar.result().encodePrettily());
+          } else {
+            logger.error(ar.cause());
+          }
+        });
   }
-  static DatabaseService createProxy(Vertx vertx, String address) {
-    return new DatabaseServiceVertxEBProxy(vertx, address);
-  }
-  ...
 }
 ```
 
-## 服务接口的限制
+### 在Vertx JVM中从Javascript调用
 
-为了利于事件总线消息的编解码, 服务接口必须只能返回两种类型:
+```js
+var service = require("qrcode-service-js/qrcode_service");
 
-- Void
-- @Fluent 返回服务本身的引用
+console.log("Creating service proxy...");
+var proxy = service.createProxy(vertx, "com.totorotec.servicefactory.qrcode-service");
 
-这是因为方法必须是非阻塞的, 如果服务是远程的, 那么就不可能在无阻塞的情况下立即返回值. 另外接口方法的参数类型也是受限的, 支持如下参数类型:
+proxy.getQrcode("https://gm.totorotec.com", 380, "png", "dataurl", "/tmp/%s.%s", function (error, data) {
+  if(error == null) {
+    console.log(data);
+  }
+  else {
+    console.log(error);
+  }
+});
+```
 
+### 在浏览器中调用
 
-- **JSON**
-- **PRIMITIVE**
-- **List<JSON>**
-- **List<PRIMITIVE>**
-- **Set<JSON>**
-- **Set<PRIMITIVE>**
-- **Map<String, JSON>**
-- **Map<String, PRIMITIVE>**
-- 任何枚举类型
-- 任何标注为 **@DataObject** 的类
+```html
+<!DOCTYPE html>
+<html lang="en">
 
-支持的异步结果的类型为:
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Test Qrcode Service in Browser</title>
+  <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+  <script src="./vertx-eventbus.js"></script>
+  <script src="./qrcode_service-proxy.js"></script>
+</head>
 
-- **JSON**
-- **PRIMITIVE**
-- **List<JSON>**
-- **List<PRIMITIVE>**
-- **Set<JSON>**
-- **Set<PRIMITIVE>**
-- 任何枚举类型
-- 任何标注为 **@DataObject** 的类
-- 其他代理
+<body>
 
-和接口方法的参数不同, 异步结果不支持返回下面两种类型:
+  <div id="qrcode"></div>
 
-- **Map<String, JSON>**
-- **Map<String, PRIMITIVE>**
+  <script>
 
-> 依据官方文档推断, 没有实际验证是否支持上述两种类型.
+    var qrcodeStr;
+    var eb = new EventBus('http://localhost:8080/eventbus');
+    eb.onopen = function () {
+      var service = new QrcodeService(eb, "com.totorotec.servicefactory.qrcode-service");
+      service.getQrcode("https://www.qq.com", 380, "png", "dataurl", "/tmp/%s.%s", function (error, data) {
+        if (error == null) {
+          console.log(data.data);
+          qrcodeStr = data.data
+          document.getElementById("qrcode").innerHTML = qrcodeStr;
 
+        }
+        else {
+          console.log(error);
+        }
+      });
+    };
+  </script>
 
-## 代码库
+</body>
 
-关于服务代理和服务工厂的使用, 本文只是从官方文档摘取重点进行描述, 如果需要了解具体是如何实现的, 可以参考 https://github.com/developerworks/service_qrcode, 这个项目是实现了一个二维码服务.
+</html>
 
-该服务可以指定:
+```
 
-- 要编码的文本内容
-- 生成的图片类型, 支持PNG, JPG, 以及Zxing 支持的图片类型
-- 支持设置图片大小
-- 支持输出类型, 目前仅支持两种类型, 一种是DataURL, 另外一种是图片文件, 如果非 dataurl, file 两种类型, 返回空字符串
-- 指定图片的临时文件路径, 该路径是字符串占位符的形式, 比如 /tmp/%s.%s , 第一个%s是UUID字符串, 第二个%s, 是文件的类型作为后缀
+### 在Node.js环境中调用
+
+```js
+var EventBus = require("vertx3-eventbus-client");
+
+var eb = new EventBus("http://localhost:8080/eventbus");
+
+eb.onopen = function () {
+  // 导入代理模块
+  var QrcodeService = require("../target/classes/qrcode-service-js/qrcode_service-proxy");
+  // 实例化服务对象
+  var service = new QrcodeService(eb, "com.totorotec.servicefactory.qrcode-service");
+  // 调用服务
+  service.getQrcode("https://www.qq.com", 380, "png", "dataurl", "/tmp/%s.%s", function (data, error) {
+    if(error == null) {
+      console.log(data);
+    } else {
+      console.log(error);
+    }
+  });
+}
+
+```
+
+## 结语
+
+事件总线, 对于异构系统集成来讲是一个很好的工具. 通过定义服务接口, 服务实现, 代理类代码生成, 服务注册, 事件总线桥, 我们可以把异构系统的各个端点连接到事件总线中, 实现分布式的, 异构系统的通信, 事件处理.
+
+异构还特别对团队有用, 大的团队使用不同的开发工具, 语言, 运行时系统等, 都可以很方便的进行集成, 只要你在JVM的生态里面, 不管你使用JVM的什么语言. 即使你不在JVM生态里面, 例如Node.js, 浏览器, 其他编程语言等, Vert.x还提供了一个TCP事件总线桥的方式进行集成.
+
+我们前面只介绍了SockJS这种集成方式, 当前互联网应用程序大部分使用HTTP作为应用层协议, 原生TCP的方式用的比较少, 在这里就不详细说明了, 有需要的可以参考Vertx的文档: http://vertx.io/docs/vertx-tcp-eventbus-bridge/java/
