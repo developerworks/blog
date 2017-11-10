@@ -207,3 +207,7 @@ eb.onopen = function () {
 异构还特别对团队有用, 大的团队使用不同的开发工具, 语言, 运行时系统等, 都可以很方便的进行集成, 只要你在JVM的生态里面, 不管你使用JVM的什么语言. 即使你不在JVM生态里面, 例如Node.js, 浏览器, 其他编程语言等, Vert.x还提供了一个TCP事件总线桥的方式进行集成.
 
 我们前面只介绍了SockJS这种集成方式, 当前互联网应用程序大部分使用HTTP作为应用层协议, 原生TCP的方式用的比较少, 在这里就不详细说明了, 有需要的可以参考Vertx的文档: http://vertx.io/docs/vertx-tcp-eventbus-bridge/java/
+
+## 项目源码
+
+完整的项目和实现可以参考我的仓库: https://github.com/developerworks/service_qrcode
