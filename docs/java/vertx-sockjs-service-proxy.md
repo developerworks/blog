@@ -47,7 +47,7 @@ public class QrcodeServiceBridge extends AbstractVerticle {
 
 生成的模块是兼容 CommonJS, AMD 和 Webpack 的. 下面是一个浏览器端的例子:
 
-```js
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
