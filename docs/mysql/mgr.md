@@ -212,7 +212,7 @@ START GROUP_REPLICATION;
 ### 加入组的问题
 
 
-> 事务问题, 个个节点的事务状态不一致
+> 事务问题, 各个节点的事务状态不一致, 所有节点加入集群前最好不要做任何数据修改操作. 否则就会出现这个错误.
 > ```
 > 2017-11-10T19:07:26.918531Z 0 [ERROR] Plugin group_replication reported: 'This member has more > executed transactions than those present in the group. Local transactions: c3c274ff-c63e-11e7-> b339-00163e0c0288:1-4 > Group transactions: 2e6bfa69-0439-41c9-add7-795a9acfd499:1-10,
 > c5898a84-c63e-11e7-bc8b-00163e0af475:1-4'
@@ -225,9 +225,23 @@ http://blog.csdn.net/yuanlin65/article/details/53782020
 set global group_replication_allow_local_disjoint_gtids_join=ON;
 ```
 
+
+## IP地址变化的问题
+
+对于一个3节点的单主集群来说, 当主节点挂了, 另外两个节点会自动选主. 其中一个会成为主节点, 并自动切换为读写模式.
+因为对于单主模式来说, 只有主节点能够执行写操作. 那么我们如何知道主节点的IP地址呢?
+
+可以在任意一个MySQL节点上通过如下SQL获取主节点的IP地址
+
+```
+SELECT * FROM performance_schema.replication_group_members WHERE MEMBER_ID = (SELECT VARIABLE_VALUE FROM performance_schema.global_status WHERE VARIABLE_NAME= 'group_replication_primary_member');
+```
+
+
 ## 参考资料
 
 https://dev.mysql.com/doc/refman/5.7/en/group-replication-launching.html
 https://www.howtoing.com/how-to-configure-mysql-group-replication-on-ubuntu-16-04/
 http://blog.csdn.net/yuanlin65/article/details/53782020
+https://stackoverflow.com/questions/41356052/how-mysql-group-replication-get-primary-node-ip-address
 
