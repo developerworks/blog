@@ -66,6 +66,8 @@ root# uuidgen
 
 ### 上传配置文件
 
+https://github.com/developerworks/blog/tree/master/docs/mysql
+
 ```
 #!/bin/bash
 # mkdir /etc/mysql/mgr.d
