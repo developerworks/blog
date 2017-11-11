@@ -212,7 +212,7 @@ START GROUP_REPLICATION;
 ### 加入组的问题
 
 
-> 事务问题, 各个节点的事务状态不一致.
+> 事务问题, 各个节点的事务状态不一致. 所有节点加入集群前最好不要修改任何数据, 否则就会出现下面的错误.
 > ```
 > 2017-11-10T19:07:26.918531Z 0 [ERROR] Plugin group_replication reported: 'This member has more > executed transactions than those present in the group. Local transactions: c3c274ff-c63e-11e7-> b339-00163e0c0288:1-4 > Group transactions: 2e6bfa69-0439-41c9-add7-795a9acfd499:1-10,
 > c5898a84-c63e-11e7-bc8b-00163e0af475:1-4'
