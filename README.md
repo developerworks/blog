@@ -1,6 +1,6 @@
 # Elixir 博客备份
 - MySQL
-    + [MYSQL组复制](docs/mysql/mgr.md)
+    + [使用MySQL 5.7 的组复制(MySQL Group Replication)](docs/mysql/mgr.md)
 - Java
     + [在 Maven 项目中使用JOOQ](docs/java/jooq-maven.md)
     + [Vert.x 3 服务代理](docs/java/vertx-service-proxy.md)
