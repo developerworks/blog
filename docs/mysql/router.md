@@ -235,6 +235,13 @@ aptitude install -y mysql-shell
 
 ### 连接方式: 通过URL的方式
 
+
+```
+mysqlsh --uri ${uri}
+```
+
+URI 支持系列各种形式
+
 ```
 mysqlx://user@localhost:33065
 mysql://user@localhost:3333
