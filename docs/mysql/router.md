@@ -312,7 +312,7 @@ var session=mysqlx.getSession({host: 'localhost',
 });
 ```
 
-### 安装X插件的集中方式
+### 安装X插件的几种方式
 
 > 如果从支持X Protocol的客户端连接到数据库, 在数据库端需要安装X Plugin以提供对 X Protocol的支持, 安装X Plugin只需要对 **mysql.plugin** 表有 **INSERT** 权限即可.
 
