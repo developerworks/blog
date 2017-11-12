@@ -1,7 +1,7 @@
 # Elixir 博客备份
 - MySQL
     + [使用MySQL 5.7 的组复制(MySQL Group Replication)](docs/mysql/mgr.md)
-    + [把复制组迁移到InnoDB Cluster](docs/mysql/change-group-replication-to-innodb-cluster.md)
+    + [把现有的复制组迁移到InnoDB Cluster](docs/mysql/change-group-replication-to-innodb-cluster.md)
     + [使用MySQL Router实现应用程序的高可用](docs/mysql/router.md)
 - Java
     + [在 Maven 项目中使用JOOQ](docs/java/jooq-maven.md)

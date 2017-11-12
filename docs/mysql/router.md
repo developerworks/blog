@@ -221,7 +221,7 @@ Query OK, 1 row affected (0.01 sec)
 - 输出格式: 制表符, 表格, JSON
 - 多行支持
 - 日志
-- X Protocol 支持, 遗留协议支持
+- MySQL协议支持, X Protocol支持
 
 
 ### 安装
