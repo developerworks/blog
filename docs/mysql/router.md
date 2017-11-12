@@ -235,29 +235,35 @@ aptitude install -y mysql-shell
 
 ### 连接方式: 通过URL的方式
 
-- mysqlx://user@localhost:33065
-- mysql://user@localhost:3333
-- mysqlx://user@server.example.com/
-- mysqlx://user@198.51.100.14:123
-- mysqlx://user@[2001:db8:85a3:8d3:1319:8a2e:370:7348]
-- mysqlx://user@198.51.100.1/world%5Fx
-- mysqlx://user@198.51.100.2:33060/world
+```
+mysqlx://user@localhost:33065
+mysql://user@localhost:3333
+mysqlx://user@server.example.com/
+mysqlx://user@198.51.100.14:123
+mysqlx://user@[2001:db8:85a3:8d3:1319:8a2e:370:7348]
+mysqlx://user@198.51.100.1/world%5Fx
+mysqlx://user@198.51.100.2:33060/world
+```
 
 ### 连接方式: 通过参数方式
 
-- --dbuser (-u) value
-- --dbpassword value
-- --host (-h) value
-- --port (-P) value
-- --schema (-D) value
-- --password (-p)
-- --socket (-S)
+```
+--dbuser (-u) value
+--dbpassword value
+--host (-h) value
+--port (-P) value
+--schema (-D) value
+--password (-p)
+--socket (-S)
+```
 
 ### 参数别名
 
-- --user is equivalent to --dbuser
-- --password is equivalent to --dbpassword
-- --database is equivalent to --schema
+```
+--user is equivalent to --dbuser
+--password is equivalent to --dbpassword
+--database is equivalent to --schema
+```
 
 ### 覆盖问题
 
