@@ -84,7 +84,7 @@ scp mgr-03.conf root@172.18.149.215:/etc/mysql/mgr.d/mgr.cnf
 
 ## 更换MySQL的数据盘
 
-双十一新购了3台本地SSD的ECS, 想把MySQL的数据目录移动到独立的SSD(/dev/vdb)上. 因此停止数据指标移动数据目录:
+双十一新购了3台本地SSD的ECS, 想把MySQL的数据目录移动到独立的SSD(/dev/vdb)上. 格式化磁盘, 创建文件系统, 并移动数据目录:
 
 
 ### 格式化磁盘
