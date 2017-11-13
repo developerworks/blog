@@ -386,7 +386,7 @@ UNINSTALL PLUGIN mysqlx;
 
 ## 参考资料
 
-
+http://mysqlserverteam.com/mysql-innodb-cluster-real-world-cluster-tutorial-for-ubuntu-and-debian/
 https://dev.mysql.com/doc/refman/5.7/en/mysqlsh.html
 https://dev.mysql.com/doc/mysql-router/2.1/en/mysqlrouter.html#mysql-router-command-options-bootstrap
 https://dev.mysql.com/doc/mysql-router/2.1/en/mysql-router-deploying-bootstrapping.html
