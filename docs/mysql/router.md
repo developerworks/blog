@@ -231,7 +231,7 @@ cd /data/mysqlrouter
 
 ### 关于 MySQL Router 的部署问题
 
-MySQL Router 目前只支持500并发连接(https://dev.mysql.com/doc/mysql-router/2.1/en/mysql-router-faq.html#faq-mysql-router-connections-concurrent), 官方建议把 MySQL Router 部署到和应用程序同一台机器上. 通过MySQL Router 的 --conf-use-sockets 启动选项, 我们可以把MySQL Router作为一个本地代理来使用.
+MySQL Router 目前只支持500并发连接(https://dev.mysql.com/doc/mysql-router/2.1/en/mysql-router-faq.html#faq-mysql-router-connections-concurrent), 官方建议把 MySQL Router 部署到和应用程序相同的一台机器上. 通过MySQL Router 的 --conf-use-sockets 启动选项, 我们可以把MySQL Router作为一个本地代理来使用.
 
 为了解决MySQL Router的单点问题. 我们可以在MySQL Router的上层在搭建一个负载均衡服务器. 我现在的环境全部是基于阿里云的, 因此很自然的选择了阿里云的SLB作为负载均衡解决方案. 如果自建服务器可以选择LVS, HAProxy等方案.
 
