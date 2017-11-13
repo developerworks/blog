@@ -246,4 +246,4 @@ https://dev.mysql.com/doc/refman/5.7/en/group-replication-launching.html
 https://www.howtoing.com/how-to-configure-mysql-group-replication-on-ubuntu-16-04/
 http://blog.csdn.net/yuanlin65/article/details/53782020
 https://stackoverflow.com/questions/41356052/how-mysql-group-replication-get-primary-node-ip-address
-
+http://mysqlhighavailability.com/group-replication-extending-group-replication-performance_schema-tables/

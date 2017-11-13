@@ -212,6 +212,22 @@ Query OK, 1 row affected (0.01 sec)
 
 > OK, MySQL Router到这里就配置好了, 在应用程序代码里面直接连接到MySQL Router的IP地址可以了.
 
+## 关于新增数据节点
+
+MySQL Router 在初始化配置的时候是连接到集群节点读取集群的元数据的. 如果在集群中新增或减少节点. 需要同步更新MySQL Router的配置, 重新执行以下命令即可:
+
+```
+mysqlrouter --bootstrap 172.18.149.213:3306 --directory /data/mysqlrouter --user=root --conf-use-sockets --force
+```
+
+当然, 更新了MySQL Router的配置的配置, 需要重启MySQL Router:
+
+
+```
+cd /data/mysqlrouter
+./stop.sh
+./start.sh
+```
 
 ## MySQL Shell
 
