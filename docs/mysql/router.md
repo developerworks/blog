@@ -408,10 +408,10 @@ UNINSTALL PLUGIN mysqlx;
 
 ## 参考资料
 
-http://wangshengzhuang.com/2017/05/08/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3/MySQL/MySQL%20HA/InnoDB%20Cluster/%E4%BB%8E%E5%B7%B2%E6%9C%89%E7%9A%84%E7%BB%84%E5%A4%8D%E5%88%B6%E6%90%AD%E5%BB%BAInnoDB%20Cluster%E7%8E%AF%E5%A2%83/
-https://ronniethedba.wordpress.com/2017/04/23/creating-an-innodb-cluster-router-from-an-existing-group-replication-deployment/
-http://mysqlserverteam.com/mysql-innodb-cluster-real-world-cluster-tutorial-for-ubuntu-and-debian/
-https://dev.mysql.com/doc/refman/5.7/en/mysqlsh.html
-https://dev.mysql.com/doc/mysql-router/2.1/en/mysqlrouter.html#mysql-router-command-options-bootstrap
-https://dev.mysql.com/doc/mysql-router/2.1/en/mysql-router-deploying-bootstrapping.html
-https://dev.mysql.com/doc/mysql-router/2.1/en/
+- http://wangshengzhuang.com/2017/05/08/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3/MySQL/MySQL%20HA/InnoDB%20Cluster/%E4%BB%8E%E5%B7%B2%E6%9C%89%E7%9A%84%E7%BB%84%E5%A4%8D%E5%88%B6%E6%90%AD%E5%BB%BAInnoDB%20Cluster%E7%8E%AF%E5%A2%83/
+- https://ronniethedba.wordpress.com/2017/04/23/creating-an-innodb-cluster-router-from-an-existing-group-replication-deployment/
+- http://mysqlserverteam.com/mysql-innodb-cluster-real-world-cluster-tutorial-for-ubuntu-and-debian/
+- https://dev.mysql.com/doc/refman/5.7/en/mysqlsh.html
+- https://dev.mysql.com/doc/mysql-router/2.1/en/mysqlrouter.html#mysql-router-command-options-bootstrap
+- https://dev.mysql.com/doc/mysql-router/2.1/en/mysql-router-deploying-bootstrapping.html
+- https://dev.mysql.com/doc/mysql-router/2.1/en/
