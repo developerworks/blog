@@ -73,7 +73,7 @@ X protocol connections to cluster 'dc':
 输入密码后, 文件就生成到 /data/mysqlrouter 目录了.
 
 > **--conf-use-sockets** 选项还会监听Unix套接字
-
+> 关于 MySQL Router 命令行的所有参数说明, 参考这里: https://dev.mysql.com/doc/mysql-router/2.1/en/mysqlrouter.html
 
 ### 启动MySQL Router
 
