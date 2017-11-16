@@ -1,6 +1,6 @@
 ## MySQL Router
 
-前面一片文章说了如何配置MySQL的分组复制. 基于分组复制的机制, 当主节点崩溃离开集群, 剩余的其他节点会相互协商, 然后选举一个新的主节点. 这里有一个问题, 就是应用程序端如果连接到了主节点, 这时主节点崩溃离开集群. 可用的数据库IP地址发生变化. 客户端应用程序这个时候还是会想失败的节点尝试连接, 虽然可以修改客户端应用程序的连接配置, 但是这种情况基本是不现实的.
+前面一片文章说了如何配置MySQL的分组复制. 基于分组复制的机制, 当主节点崩溃离开集群, 剩余的其他节点会相互协商, 然后选举一个新的主节点. 这里有一个问题, 就是应用程序端如果连接到了主节点, 这时主节点崩溃离开集群. 可用的数据库IP地址发生变化. 客户端应用程序这个时候还是会向失败的节点尝试连接, 虽然可以修改客户端应用程序的连接配置, 但是这种情况基本是不现实的.
 
 虽然我们可以通过下面的SQL语句获取主节点的IP地址
 
@@ -222,7 +222,6 @@ mysqlrouter --bootstrap 172.18.149.213:3306 --directory /data/mysqlrouter --user
 
 当然, 更新了MySQL Router的配置的配置, 需要重启MySQL Router:
 
-
 ```
 cd /data/mysqlrouter
 ./stop.sh
@@ -233,7 +232,9 @@ cd /data/mysqlrouter
 
 MySQL Router 目前只支持500并发连接(https://dev.mysql.com/doc/mysql-router/2.1/en/mysql-router-faq.html#faq-mysql-router-connections-concurrent), 官方建议把 MySQL Router 部署到和应用程序相同的一台机器上. 通过MySQL Router 的 --conf-use-sockets 启动选项, 我们可以把MySQL Router作为一个本地代理来使用.
 
-为了解决MySQL Router的单点问题. 我们可以在MySQL Router的上层在搭建一个负载均衡服务器. 我现在的环境全部是基于阿里云的, 因此很自然的选择了阿里云的SLB作为负载均衡解决方案. 如果自建服务器可以选择LVS, HAProxy等方案.
+~~为了解决MySQL Router的单点问题. 我们可以在MySQL Router的上层在搭建一个负载均衡服务器. 我现在的环境全部是基于阿里云的, 因此很自然的选择了阿里云的SLB作为负载均衡解决方案. 如果自建服务器可以选择LVS, HAProxy等方案.~~
+
+在MySQL Router之上再做负载均衡. 管理上更复杂了, 这里还是采用一个应用程序部署一个本地MySQL Router的策略.
 
 ## MySQL Shell
 
@@ -407,6 +408,7 @@ UNINSTALL PLUGIN mysqlx;
 
 
 ## 参考资料
+
 
 - http://wangshengzhuang.com/2017/05/08/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3/MySQL/MySQL%20HA/InnoDB%20Cluster/%E4%BB%8E%E5%B7%B2%E6%9C%89%E7%9A%84%E7%BB%84%E5%A4%8D%E5%88%B6%E6%90%AD%E5%BB%BAInnoDB%20Cluster%E7%8E%AF%E5%A2%83/
 - https://ronniethedba.wordpress.com/2017/04/23/creating-an-innodb-cluster-router-from-an-existing-group-replication-deployment/
