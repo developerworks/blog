@@ -41,6 +41,8 @@ docker run -d -p 80:80 \
   --name pmm-server \
   -e SERVER_USER=test \
   -e SERVER_PASSWORD=test \
+  -e DISABLE_TELEMETRY=true \
+  -e METRICS_MEMORY=262144 \
   --restart always \
   percona/pmm-server:latest
 ```
@@ -53,6 +55,8 @@ docker run -d -p 80:80 \
   --name pmm-server \
   -e SERVER_USER=test \
   -e SERVER_PASSWORD=test \
+  -e DISABLE_TELEMETRY=true \
+  -e METRICS_MEMORY=262144 \
   -e ORCHESTRATOR_ENABLED=true \
   --restart always \
   percona/pmm-server:latest

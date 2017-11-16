@@ -1,13 +1,14 @@
 # Elixir 博客备份
 - MySQL
-    + [使用MySQL 5.7 的组复制(MySQL Group Replication)](docs/mysql/mgr.md)
-    + [把现有的复制组迁移到InnoDB Cluster](docs/mysql/change-group-replication-to-innodb-cluster.md)
-    + [使用MySQL Router实现应用程序的高可用](docs/mysql/router.md)
-    + [使用Percona Monitor and Management统计数据库服务器](docs/mysql/pmm.md)
+    + [MySQL 5.7: MySQL 组复制(MySQL Group Replication)](docs/mysql/mgr.md)
+    + [MySQL 5.7: 把现有的复制组迁移到InnoDB Cluster](docs/mysql/change-group-replication-to-innodb-cluster.md)
+    + [MySQL 5.7: 使用MySQL Router实现应用程序的高可用](docs/mysql/router.md)
+    + [MySQL 5.7: 使用PMM监视和管理数据库](docs/mysql/pmm.md)
 - Java
     + [在 Maven 项目中使用JOOQ](docs/java/jooq-maven.md)
-    + [Vert.x 3 服务代理](docs/java/vertx-service-proxy.md)
-    + [Vert.x 3 SockJS服务代理](docs/java/vertx-sockjs-service-proxy.md)
+    + [Vert.x 3: 服务代理](docs/java/vertx-service-proxy.md)
+    + [Vert.x 3: SockJS服务代理](docs/java/vertx-sockjs-service-proxy.md)
+    + [Vert.x 3: Node和浏览器端事件总线重连](docs/java/vertx-event-bus-bridge-reconnect.md)
 - GraphQL
 
     + [GraphQL 入门: 简介](docs/graphql/introduction.md)
