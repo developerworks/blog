@@ -37,6 +37,29 @@ drwxr-xr-x 3 root root    4096 Nov 11 11:14 ../
 
 > 注意: 不要安装Ubuntu 16.04自带的MySQL, 16.04自带的MySQL安装后没有 group_replication.so 这个东西, 一定要通过 **mysql-apt-config_0.8.9-1_all.deb** 提供的仓库安装. MySQL 官方版本的最新版本的仓库可以在这里下载: https://dev.mysql.com/downloads/repo/apt/
 
+> 该仓库提供了下面的Linux发布版的MySQL软件包:
+>
+> - Debian - 7
+> - Debian - 8
+> - Debian - 9
+> - Ubuntu - 14.04 LTS
+> - Ubuntu - 16.04 LTS
+> - Ubuntu - 17.04
+> - Ubuntu - 17.10
+>
+> 该仓库包含下列MySQL软件包和相关工具:
+>
+> - MySQL 8.0 (Development)
+> - MySQL 5.7 (GA)
+> - MySQL 5.6 (GA)
+> - MySQL Cluster 7.5 (GA)
+> - MySQL Cluster 7.6 (Development)
+> - MySQL Workbench 6.3 (GA) - Ubuntu Only
+> - MySQL Router (GA and preview)
+> - MySQL Utilities
+> - MySQL Connector / Python
+> - MySQL Shell (GA and preview)
+
 每个节点创建目录, 用于放置MGR(MySQL Group Replication)的配置文件
 
 ```
@@ -239,6 +262,9 @@ set global group_replication_allow_local_disjoint_gtids_join=ON;
 SELECT * FROM performance_schema.replication_group_members WHERE MEMBER_ID = (SELECT VARIABLE_VALUE FROM performance_schema.global_status WHERE VARIABLE_NAME= 'group_replication_primary_member');
 ```
 
+**更新2017-11-12**:
+IP地址的问题参后续文章: [MySQL 5.7: 使用MySQL Router实现应用程序的高可用][1]
+
 
 ## 参考资料
 
@@ -247,3 +273,5 @@ https://www.howtoing.com/how-to-configure-mysql-group-replication-on-ubuntu-16-0
 http://blog.csdn.net/yuanlin65/article/details/53782020
 https://stackoverflow.com/questions/41356052/how-mysql-group-replication-get-primary-node-ip-address
 http://mysqlhighavailability.com/group-replication-extending-group-replication-performance_schema-tables/
+
+  [1]: https://github.com/developerworks/blog/blob/master/docs/mysql/router.md
