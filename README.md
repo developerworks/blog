@@ -1,4 +1,6 @@
 # Elixir 博客备份
+- Neo4j
+    + [Neo4j: RBAC权限管理系统图模型](docs/neo4j/neo4j-modeling-rbac.md)
 - MySQL
     + [MySQL 5.7: MySQL 组复制(MySQL Group Replication)](docs/mysql/mgr.md)
     + [MySQL 5.7: 把现有的复制组迁移到InnoDB Cluster](docs/mysql/change-group-replication-to-innodb-cluster.md)
