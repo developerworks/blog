@@ -1,5 +1,3 @@
-https://www.xiaoman.cn/detail/150
-
 ## 建模RBAC权限管理系统
 
 ![clipboard.png](https://segmentfault.com/img/bV3aG1)
