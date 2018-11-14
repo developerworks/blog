@@ -89,9 +89,16 @@ http://www.springframework.org/schema/context/spring-context.xsd">
     <int:channel id="channelResultSet"/>
     <int:channel id="channelUpdate"/>
     <!-- JDBC查询通道 -->
-    <int-jdbc:inbound-channel-adapter id="jdbcQuery" data-source="dataSource" channel="channelResultSet" query="SELECT * FROM test"/>
+    <int-jdbc:inbound-channel-adapter
+        id="jdbcQuery"
+        data-source="dataSource"
+        channel="channelResultSet" query="SELECT * FROM test"/>
     <!-- JDBC更新通道 -->
-    <int-jdbc:outbound-channel-adapter id="jdbcUpdate" data-source="dataSource" channel="channelUpdate" query="INSERT INTO test VALUES(NULL, 'name')"/>
+    <int-jdbc:outbound-channel-adapter
+        id="jdbcUpdate"
+        data-source="dataSource"
+        channel="channelUpdate"
+        query="INSERT INTO test VALUES(NULL, 'name')"/>
 </beans>
 ```
 
