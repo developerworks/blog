@@ -1,8 +1,10 @@
+# Collectd
+
 ## Collectd 统计项
 
 查看`types.db`文件中定义的Postgresql统计规范
 
-```
+```shell
 root@ubuntu:~# cat /usr/share/collectd/types.db |grep pg_
 pg_blks           value:DERIVE:0:U
 pg_db_size        value:GAUGE:0:U
@@ -15,14 +17,13 @@ pg_xact           value:DERIVE:0:U
 
 第二个字段为[数据源类型](https://collectd.org/wiki/index.php/Data_source), `types.db`规范参考[types.db.5.shtml](https://collectd.org/documentation/manpages/types.db.5.shtml)
 
-
 ## 关于 Collectd 的 types.db 数据规范定义文件
 
 types.db - 系统统计收集守护进程collectd的数据集说明
 
 ### 大纲
 
-```
+```shell
 bitrate value:GAUGE:0:4294967295
 counter value:COUNTER:U:U
 if_octets rx:COUNTER:0:4294967295, tx:COUNTER:0:4294967295
@@ -44,7 +45,7 @@ if_octets rx:COUNTER:0:4294967295, tx:COUNTER:0:4294967295
 
 如果你想指定一个定制的类型, 你可以在默认的 `types.db` 里添加, 或者可以另起一行在下面添加一个新的文件.
 
-```
+```shell
 For example:
 　　TypesDB "/opt/collectd/share/collectd/types.db"
 　　TypesDB "/opt/collectd/etc/types.db.custom"
@@ -56,10 +57,9 @@ For example:
 
 `postgresql` 插件从PostgreSQL数据库中查询统计信息. 它保持一个到所有配置的数据库的连接, 并且当连接中断时重连. 数据库是由一个 `<Database>` 配置块进行配置. 默认统计是从PostgreSQL的统计收集器统计的. 要使这个插件能够正常的工作, 需要启用数据库的统计搜集功能. 参考 [Statistics Collector]()文档
 
-
 通过使用 `<Query>` 块指定自定义的数据库查询, 可以搜集任何数据.
 
-```
+```xml
 <Plugin postgresql>
   <Query locks>
     Statement "
@@ -238,7 +238,7 @@ For example:
 
 #### 缓存命中率
 
-```
+```xml
 <Query cache_hit_ratio>
   Statement "
   SELECT sum(heap_blks_hit) / (sum(heap_blks_hit) + sum(heap_blks_read)) as cache_hit_ratio
@@ -254,7 +254,7 @@ For example:
 
 #### 索引命中率
 
-```
+```xml
 <Query cache_idx_hit_ratio>
   Statement "
   SELECT (sum(idx_blks_hit) - sum(idx_blks_read)) / sum(idx_blks_hit) as cache_idx_hit_ratio
@@ -270,7 +270,7 @@ For example:
 
 #### TPS
 
-```
+```xml
 <Query tps>
   Statement "
   SELECT datname, xact_commit + xact_rollback AS tps
@@ -289,12 +289,10 @@ For example:
 
 下载配置文件并导入, 然后根据自己的Collectd配置进行调整
 
-https://raw.githubusercontent.com/developerworks/blog/master/files/grafana_postgres_dashbord.json
+[https://raw.githubusercontent.com/developerworks/blog/master/files/grafana_postgres_dashbord.json](https://raw.githubusercontent.com/developerworks/blog/master/files/grafana_postgres_dashbord.json)
 
 最后的效果如下图
 
-
 ![图片描述][1]
-
 
   [1]: https://segmentfault.com/img/bVDg7Q
