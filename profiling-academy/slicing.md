@@ -82,8 +82,8 @@
 
 > 上面的 XML 定义了一个元素, 以及与之对应的两个切片.
 
+![clipboard.png][5]
 
-![clipboard.png](/img/bVbu4n4)
 回顾上一节, 介绍了 5 中类型的鉴别器, 上图中使用了 **type** 类型的鉴别器, 如**表 2-1**中定义的: **切片按指定元素的类型与指定的补充规范(Profile)进行区分**, 它表示: 切片需要对比其 `<path>` 所指定的类型和 `<type>.< targetProfile>` 来区分两个不同的切片. 这连个切片除了 元素ID, 和 **<type>.< targetProfile>** 的值不同其他的都一样.
 
 
@@ -127,3 +127,4 @@
   [2]: https://segmentfault.com/img/bVbu4nT
   [3]: https://segmentfault.com/img/bVbu4nT
   [4]: https://segmentfault.com/img/bVbu4rp
+  [5]: https://segmentfault.com/img/bVbu4n4
