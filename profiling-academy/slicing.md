@@ -1,3 +1,7 @@
+## 参考资料
+
+- https://simplifier.net/guide/profilingacademy/Slicing
+
 ## 简介
 
 在本文中, 你将会学习到切片具体内容. 我们使用 Forge 官方的 HL7®FHIR® 补充规范编辑器, 来创建我们的补充规范, 你可以 [免费下载][1] Forge
