@@ -92,7 +92,7 @@
 在评估资源实例时,切片规则定义用来如何解释切片. 在切片元素的时候, 可以使用这些规则定义来说明是否允许附加内容. 在切片元素的`rules`元素中, 可以选择以下选项之一:
 
 
-![clipboard.png](/img/bVbu4nT)
+![clipboard.png][2]
 
 
 |代码|定义|
@@ -107,7 +107,7 @@
 
 **图 5-1: 元素切片定义**
 
-![clipboard.png](/img/bVbu4qD)
+![clipboard.png][3]
 
 选择要切片的元素, 然后单击分片图标(如上图). 元素现在是 "Sliced", 可以通过单击带有加号的切片图标来添加切片. 可以根据需要创建任意多个切片, 方法是选择切片元素, 然后再次单击 "Add Slice" 图标. 添加的切片可以像任何其他元素一样定义和约束.
 
@@ -116,7 +116,7 @@
 
 **图 5-2: 切片规则**
 
-![clipboard.png](/img/bVbu4rp)
+![clipboard.png][4]
 
 默认情况下，**rules** 元素设置为 **open** (如图 5-2 中 2 处). 通过从下拉菜单中选择所需的值, 可以在切片元素(旁边有切片图标的元素, 如图 5-2 中 1 处, 此例中为 `Patient.identifier` 元素, 表示患者标识)中更改此值.
 
@@ -124,3 +124,6 @@
 
 
   [1]: https://simplifier.net/forge/download
+  [2]: https://segmentfault.com/img/bVbu4nT
+  [3]: https://segmentfault.com/img/bVbu4nT
+  [4]: https://segmentfault.com/img/bVbu4rp
