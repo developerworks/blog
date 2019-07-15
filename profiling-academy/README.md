@@ -4,4 +4,5 @@
 - [切片](slicing.md)
 - [逻辑模型](logical-models.md)
 - [自定义约束](custom-constraints.md)
+- [Profiling 工具](profiling-tools.md)
   
