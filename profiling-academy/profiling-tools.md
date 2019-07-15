@@ -20,7 +20,7 @@
 
 - [FHIR 注册库][2]
 - [Simplifier][3]
-- [FHIR 扩展性注册库][4]
+- [FHIR 扩展注册库][4]
 - hl7.org/fhir 上的 `Profiles` 标签
 
 ## 构建补充规范和扩展
@@ -150,6 +150,10 @@ Simplifier:
 - Java validator
 - [ClinFHIR][24]
 
+## 参考资料
+
+- [FHIR 工具摘要][25]
+
   [1]: http://wiki.hl7.org/index.php?title=FHIR_Tools_Registry
   [2]: http://registry.fhir.org
   [3]: https://simplifier.net/
@@ -174,3 +178,5 @@ Simplifier:
   [22]: https://www.youtube.com/watch?v=g9sFmXtZYjc&feature=youtu.be
   [23]: http://wiki.hl7.org/index.php?title=IG_Publisher_Documentation
   [24]: http://clinfhir.com/
+  [25]: https://gist.github.com/jkiddo/cdcd4dead8e192386c2da8ed71881913
+  
